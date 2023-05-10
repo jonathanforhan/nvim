@@ -1,6 +1,10 @@
 return {
   {
-    lazy = false,
+    event = {
+      "BufEnter *.cpp",
+      "BufEnter *.cxx",
+      "BufEnter *.cc",
+    },
     "Badhi/nvim-treesitter-cpp-tools",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     name = "nt-cpp-tools",
@@ -16,4 +20,3 @@ return {
     end,
   }
 }
-

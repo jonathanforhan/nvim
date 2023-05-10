@@ -29,7 +29,7 @@ return {
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true,     -- enable or disable format on save globally
+        enabled = false,     -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },
@@ -84,12 +84,17 @@ return {
     vim.cmd [[hi DiagnosticVirtualTextError guibg=clear]]
     vim.cmd [[hi DiagnosticVirtualTextWarn guibg=clear]]
     vim.cmd [[hi DiagnosticVirtualTextHint guibg=clear]]
+    vim.cmd [[hi DiagnosticVirtualTextInfo guibg=clear]]
+    vim.cmd [[hi DiagnosticVirtualTextOk guibg=clear]]
+    vim.cmd [[hi Visual guibg=#24283b]]
 
     vim.cmd [[autocmd BufEnter * :setlocal tabstop=4 shiftwidth=4]]
     vim.cmd [[autocmd BufEnter *.ts* :setlocal tabstop=2 shiftwidth=2]]
     vim.cmd [[autocmd BufEnter *.js* :setlocal tabstop=2 shiftwidth=2]]
     vim.cmd [[autocmd BufEnter *.lua :setlocal tabstop=2 shiftwidth=2]]
     vim.cmd [[autocmd BufEnter *.html :setlocal tabstop=2 shiftwidth=2]]
+    vim.cmd [[autocmd BufEnter *.css :setlocal tabstop=2 shiftwidth=2]]
+    vim.cmd [[autocmd BufEnter *.xml :setlocal tabstop=2 shiftwidth=2]]
 
     vim.cmd [[augroup tmux | au!]]
     vim.cmd [[autocmd BufEnter,FocusGained * :call writefile(["vim_buf='" . expand("%:p") . "'"], "/home/jon/.vim/buf")]]
