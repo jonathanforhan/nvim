@@ -21,18 +21,22 @@ return {
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
-    -- quick save
-    ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
     ["Q"] = { "<nop>", desc = "Prime told me to do this" },
     -- Quick Jump --
     ["L"] = { "J" },
     ["J"] = { "5j" },
     ["K"] = { "5k" },
-    ["<C-0>"] = { ":ClangdSwitchSourceHeader<CR>" },
+    ["<C-0>"] = { "<cmd>ClangdSwitchSourceHeader<cr>" },
     -- Terminal
-    ["<C-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" },
+    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "ToggleTerm float" },
     -- Switch Header/Source --
-    ["<leader>m"] = { ":ClangdSwitchSourceHeader<CR>", desc = "switch source-header" }
+    ["<leader>m"] = { "<cmd>ClangdSwitchSourceHeader<cr>", desc = "switch source-header" },
+    -- Buffer navigation --
+    [",,"] = { "<cmd>bp<cr>", desc = "buffer previous" },
+    [",."] = { "<cmd>bn<cr>", desc = "buffer next" },
+    -- Hex --
+    ["<leader>x"] = { "<cmd>%!xxd<cr>", desc = "hex dump" },
+    ["<leader>X"] = { "<cmd>%!xxd -r<cr>", desc = "hex undump" },
   },
   v = {
     -- Move Block --
@@ -42,11 +46,11 @@ return {
     ["J"] = { "5j" },
     ["K"] = { "5k" },
     -- Member Function --
-    ["<leader>m"] = { ":TSCppDefineClassFunc<CR>:ClangdSwitchSourceHeader<CR>", desc = "nt-cpp-tools plugin" }
+    ["<leader>m"] = { ":TSCppDefineClassFunc<cr>:ClangdSwitchSourceHeader<cr>", desc = "nt-cpp-tools plugin" }
   },
   t = {
-    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "ToggleTerm close" }
+    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "ToggleTerm close" },
     -- setting a mapping to false will disable it
-    -- ["<esc>"] = false,
-  },
+    ["<C-l>"] = false
+  }
 }
