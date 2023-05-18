@@ -113,11 +113,24 @@ return {
     vim.cmd [[autocmd BufEnter *.css  :setlocal tabstop=2 shiftwidth=2]]
     vim.cmd [[autocmd BufEnter *.xml  :setlocal tabstop=2 shiftwidth=2]]
 
-    vim.cmd [[augroup tmux | au!]]
-    vim.cmd [[autocmd BufEnter,FocusGained * :call writefile(["nvim_buffer='" . expand("%:p") . "'"], "/home/jon/.config/tmux/plugins/tmux-essentials/data/nvim_buffer")]]
-    vim.cmd [[autocmd VimLeave,BufLeave,FocusLost * :call writefile(["nvim_buffer=''"], "/home/jon/.config/tmux/plugins/tmux-essentials/data/nvim_buffer")]]
-
     vim.cmd [[autocmd BufEnter * :set colorcolumn=81]]
     vim.cmd [[autocmd BufEnter * :hi VirtColumn guifg=#24283b]]
+
+    local home = os.getenv("HOME")
+    local nbuf = io.open(home .. "/.config/tmux/plugins/tmux-essentials/data/nvim_buffer")
+    if nbuf ~= nil then
+      io.close(nbuf)
+      vim.cmd [[augroup tmux | au!]]
+      vim.cmd [[autocmd BufEnter,FocusGained * :call writefile(["nvim_buffer='" . expand("%:p") . "'"], expand("$HOME/.config/tmux/plugins/tmux-essentials/data/nvim_buffer"))]]
+      vim.cmd [[autocmd VimLeave,BufLeave,FocusLost * :call writefile(["nvim_buffer=''"], expand("$HOME/.config/tmux/plugins/tmux-essentials/data/nvim_buffer"))]]
+    else
+      nbuf = io.open(home .. "/.tmux/plugins/tmux-essentials/data/nvim_buffer")
+      if nbuf ~= nil then
+        io.close(nbuf)
+        vim.cmd [[augroup tmux | au!]]
+        vim.cmd [[autocmd BufEnter,FocusGained * :call writefile(["nvim_buffer='" . expand("%:p") . "'"], expand("$HOME/.tmux/plugins/tmux-essentials/data/nvim_buffer"))]]
+        vim.cmd [[autocmd VimLeave,BufLeave,FocusLost * :call writefile(["nvim_buffer=''"], expand("$HOME/.tmux/plugins/tmux-essentials/data/nvim_buffer"))]]
+      end
+    end
   end,
 }
