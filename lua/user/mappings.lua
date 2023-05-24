@@ -31,9 +31,6 @@ return {
     ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "ToggleTerm float" },
     -- Switch Header/Source --
     ["<leader>m"] = { "<cmd>ClangdSwitchSourceHeader<cr>", desc = "switch source-header" },
-    -- Buffer navigation --
-    [",,"] = { "<cmd>bp<cr>", desc = "buffer previous" },
-    [",."] = { "<cmd>bn<cr>", desc = "buffer next" },
     -- Hex --
     ["<leader>x"] = { "<cmd>%!xxd<cr>", desc = "hex dump" },
     ["<leader>X"] = { "<cmd>%!xxd -r<cr>", desc = "hex undump" },
